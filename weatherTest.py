@@ -18,10 +18,6 @@ if x["cod"] != "404":
 
 	current_temperature = y["temp"]
 
-	#current_pressure = y["pressure"]
-
-	#current_humidity = y["humidity"]
-
 	z = x["weather"]
 
 	weather_description = z[0]["description"]
