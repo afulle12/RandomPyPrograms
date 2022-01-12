@@ -13,7 +13,7 @@ def webpage(counter):
     rPos2 = ".jpg"
     totalString = (rPos0 + rPos1 + rPos2)
     fileName = (rPos1 + rPos2)
-    print("\n" + totalString)
+    #print("\n" + totalString)
     totalString = wget.download(totalString)
     if Path(fileName).stat().st_size < 1000:
         os.remove(fileName)
@@ -28,17 +28,16 @@ def urlGenerator():
 
     url = random.sample(all, 5)
     url = "".join(url)
-    print(url)
+    #print(url)
     return url
 
 counter = 0;
+x = 0;
 num = int(input("How many images do you want to download? "))
-for x in range(num):
-    if (webpage(counter)) == -1:
-        counter += 1
-        x       -= 1
-    print("\nFinished downloading image " + str(x+1) + ", waiting 7 seconds")
-    time.sleep(7.3)
-counter = float(counter)
-num = float(num)
-print("\nThe failure rate was ", str(100*(counter/num)), "%")
+while x < num:
+    if (webpage(counter)) != -1:
+        x += 1
+        print("\nFinished downloading image " + str(x) + ", waiting 7 seconds")
+        if x != num:
+            time.sleep(7.1)
+print("\nDownloaded " + str(x) + " photos succcessfully!")
