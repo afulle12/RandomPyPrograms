@@ -44,8 +44,8 @@ def urlGenerator():
         #print(url)
         return url
 
-counter = 0;
-x = 0;
+counter = 0
+x = 0
 num = int(input("How many images do you want to download? "))
 while x < num:
     if (webpage(counter)) != -1:
