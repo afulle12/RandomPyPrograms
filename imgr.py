@@ -13,10 +13,10 @@ def webpage(counter):
     rPos2 = ".jpg"
     totalString = (rPos0 + rPos1 + rPos2)
     fileName = (rPos1 + rPos2)
-    #print("\n" + totalString)
     totalString = wget.download(totalString)
-    if Path(fileName).stat().st_size < 1000:
+    if os.path.getsize(fileName) < 8000:
         os.remove(fileName)
+        #print("\nDeleted: " + fileName + "\n")
         return -1
 
 def urlGenerator():
@@ -25,11 +25,24 @@ def urlGenerator():
     num   = string.digits
 
     all = lower + upper + num
-
-    url = random.sample(all, 5)
-    url = "".join(url)
-    #print(url)
-    return url
+    list = [0, 1, 2]
+    decider = random.choice(list)
+    #Only selecting images in the 5 character long range is more efficient but I don't care
+    if decider == 0:
+        url = random.sample(all, 5)
+        url = "".join(url)
+        #print(url)
+        return url
+    if decider == 1:
+        url = random.sample(all, 6)
+        url = "".join(url)
+        #print(url)
+        return url
+    if decider == 2:
+        url = random.sample(all, 7)
+        url = "".join(url)
+        #print(url)
+        return url
 
 counter = 0;
 x = 0;
